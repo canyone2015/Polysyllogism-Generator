@@ -1,0 +1,21 @@
+{
+  "name": "polysyllogism-generator",
+  "version": "0.1.0",
+  "description": "Polysyllogism generator with Z3-backed verification",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "demo":         "node scripts/demo.js",
+    "test:unit":    "node --test test/unit.test.js",
+    "test:fuzz":    "node --test test/fuzz-consistency.test.js test/fuzz-entails.test.js",
+    "test:gen":     "node --test test/generator-verify.test.js",
+    "test:full":    "node --test test/completeness.test.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "z3-solver": "^4.13.0"
+  },
+  "license": "MIT"
+}
