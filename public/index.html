@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Polysyllogism Workshop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Polysyllogism Workshop</h1>
+        <button id="theme-toggle" class="icon-btn" title="Toggle theme">Sun</button>
+    </header>
+
+    <main>
+        <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="generate">Generate</button>
+            <button class="tab" data-tab="solve">Solve</button>
+        </div>
+
+        <!-- GENERATE -->
+        <section id="tab-generate" class="panel active">
+            <div class="card">
+                <h2>Generator settings</h2>
+
+                <div class="form-row">
+                    <label>Premises</label>
+                    <div class="form-row-value">
+                        <input type="number" id="pMin" min="1" max="100" value="4" title="min">
+                        <span class="dash">–</span>
+                        <input type="number" id="pMax" min="1" max="100" value="6" title="max">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label>Chain depth</label>
+                    <div class="form-row-value">
+                        <input type="number" id="dMin" min="1" max="100" value="2" title="min">
+                        <span class="dash">–</span>
+                        <input type="number" id="dMax" min="1" max="100" value="3" title="max">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label>Conclusion truth</label>
+                    <select id="conclMode">
+                        <option value="random">Random</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label>Additional conclusions</label>
+                    <input type="number" id="nAdd" min="0" max="10" value="0">
+                    <span class="hint">0–10, derivable from the same premises</span>
+                </div>
+
+                <div class="actions">
+                    <button id="btn-generate" class="btn-primary">Generate</button>
+                </div>
+            </div>
+            <div id="generate-result"></div>
+        </section>
+
+        <!-- SOLVE -->
+        <section id="tab-solve" class="panel">
+            <div class="card">
+                <h2>Solve a polysyllogism</h2>
+
+                <label class="block-label" for="user-premises">Premises (one per line)</label>
+                <textarea id="user-premises" rows="6"
+                          placeholder="All Robot is Wizard&#10;Some Wizard is not Knight&#10;..."></textarea>
+
+                <label class="block-label" for="user-conclusions">Conclusions to test (one per line)</label>
+                <textarea id="user-conclusions" rows="3"
+                          placeholder="Some Robot is not Knight"></textarea>
+
+                <div class="actions">
+                    <button id="btn-solve" class="btn-primary">Solve</button>
+                    <span class="hint">Forms: <code>All X is Y</code>, <code>No X is Y</code>,
+                        <code>Some X is Y</code>, <code>Some X is not Y</code>.</span>
+                </div>
+            </div>
+            <div id="solve-result"></div>
+        </section>
+    </main>
+
+    <script src="bundle.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

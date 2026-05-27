@@ -416,9 +416,28 @@ const TERM_POOL = [
     'Ocean', 'Painter', 'Pyramid', 'River', 'Robot', 'Tiger', 'Violin', 'Window', 'Wizard',
 ];
 
+const TERM_POOL2 = [
+    'Anchor', 'Apple', 'Arrow', 'Balloon', 'Basket', 'Beacon', 'Bicycle', 'Boat',
+    'Book', 'Bottle', 'Bridge', 'Bucket', 'Cabin', 'Camera', 'Candle', 'Canyon',
+    'Castle', 'Cave', 'Chair', 'Cloud', 'Clover', 'Coin', 'Comet', 'Compass',
+    'Cottage', 'Country', 'Crown', 'Cup', 'Curtain', 'Desk', 'Diamond', 'Dolphin',
+    'Door', 'Dragon', 'Drum', 'Eagle', 'Engine', 'Feather', 'Fence', 'Field',
+    'Flag', 'Flute', 'Forest', 'Fountain', 'Garden', 'Glacier', 'Globe', 'Guitar',
+    'Hammer', 'Harbor', 'Harp', 'Helmet', 'Island', 'Jacket', 'Key', 'Kite',
+    'Knight', 'Ladder', 'Lamp', 'Lantern', 'Leaf', 'Library', 'Lighthouse', 'Map',
+    'Meadow', 'Mirror', 'Mountain', 'Museum', 'Notebook', 'Ocean', 'Painter', 'Palace',
+    'Pebble', 'Piano', 'Pillow', 'Planet', 'Pocket', 'Pond', 'Pyramid', 'Quilt',
+    'Rainbow', 'Ribbon', 'River', 'Road', 'Robot', 'Rocket', 'Sailor', 'Shell',
+    'Shield', 'Ship', 'Statue', 'Stone', 'Sword', 'Telescope', 'Temple', 'Tiger',
+    'Tower', 'Train', 'Tree', 'Violin', 'Window', 'Wizard', 'Yacht'
+];
+
 module.exports = {
+    IMMEDIATE_INFERENCES,
+    TRUE_CONCLUSIONS,
     KINDS,
     TERM_POOL,
+    TERM_POOL2,
     negate,
     isConsistent,
     entails,

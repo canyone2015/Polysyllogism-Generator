@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Polysyllogism generator with Z3-backed verification",
   "type": "commonjs",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
+    "start":        "node src/server.js",
     "demo":         "node scripts/demo.js",
     "test:unit":    "node --test test/unit.test.js",
     "test:fuzz":    "node --test test/fuzz-consistency.test.js test/fuzz-entails.test.js",

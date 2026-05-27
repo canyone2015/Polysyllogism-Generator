@@ -22,6 +22,9 @@ npm install
 
 ```bash
 npm run demo
+...
+npx esbuild src/api.js --bundle --format=iife --global-name=PolyAPI --outfile=public/bundle.js
+npm run start
 ```
 
 Programmatically:
