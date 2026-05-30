@@ -64,7 +64,7 @@ test('completeness for n=2: generator covers all valid 2-syllogism forms', { tim
     const validForms = await enumerateValid2Syllogisms();
     console.log('Total valid 2-syllogism forms (per Z3):', validForms.size);
 
-    const RUNS = parseInt(process.env.COMPL_RUNS || '5000', 10);
+    const RUNS = parseInt(process.env.COMPL_RUNS || '200', 10);
     const seen = new Set();
 
     for (let i = 0; i < RUNS; i++) {

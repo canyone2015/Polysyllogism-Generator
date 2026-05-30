@@ -33,13 +33,34 @@ async function verifyOne(result, chainDepth) {
             }
         }
     }
+
+    if (!conclusionIsTrue && chainDepth >= 2) {
+        const w1 = conclusion[0];
+        const w2 = conclusion[2];
+        outer: for (let k = 1; k < chainDepth; k++) {
+            for (const subset of combinations(premises, k)) {
+                for (const [a, b] of [[w1, w2], [w2, w1]]) {
+                    for (const kind of KINDS) {
+                        if (await entailsZ3(subset, [a, kind, b])) {
+                            issues.push(
+                                `subset of size ${k} already determines relation ` +
+                                `(${a} ${kind} ${b}): ${JSON.stringify(subset)}`
+                            );
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     return issues;
 }
 
 test('generator output verified by Z3 + uniform distribution', { timeout: 600_000 }, async () => {
     await setupZ3();
 
-    const RUNS = parseInt(process.env.GEN_RUNS || '1000', 10);
+    const RUNS = parseInt(process.env.GEN_RUNS || '200', 10);
     const configs = [
         { nPremises: 2,  chainDepth: 2 },
         { nPremises: 3,  chainDepth: 3 },

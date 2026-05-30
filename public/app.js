@@ -5,7 +5,7 @@ function setTheme(t) {
     themeBtn.textContent = t === 'dark' ? 'Moon' : 'Sun';
     try { localStorage.setItem('pgs_theme', t); } catch (_) {}
 }
-setTheme(localStorage.getItem('pgs_theme') || 'light');
+setTheme(localStorage.getItem('pgs_theme') || 'dark');
 themeBtn.onclick = () =>
     setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
 

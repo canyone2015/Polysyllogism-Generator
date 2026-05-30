@@ -228,6 +228,18 @@ function hasShorterProof(premises, conclusion, chainDepth) {
     return false;
 }
 
+function relationDeterminableShort(premises, w1, w2, chainDepth) {
+    for (const idxs of shortPremisePaths(premises, w1, w2, chainDepth - 1)) {
+        const subset = idxs.map(i => premises[i]);
+        for (const [a, b] of [[w1, w2], [w2, w1]]) {
+            for (const k of KINDS) {
+                if (entails(subset, [a, k, b])) return true;
+            }
+        }
+    }
+    return false;
+}
+
 // 6. Main generator
 
 function generatePolysyllogism({
@@ -358,7 +370,7 @@ function generatePolysyllogism({
                     if (a === cl && b === cr && k === ck) continue;
                     const alt = [a, k, b];
                     if (entails(premises, alt)) continue;
-                    if (hasShorterProof(premises, negate(alt), chainDepth)) continue;
+                    if (relationDeterminableShort(premises, a, b, chainDepth)) continue;
                     alternatives.push(alt);
                 }
             }
@@ -378,7 +390,7 @@ function generatePolysyllogism({
         } else {
             if (entails(premises, finalConclusion))
                 continue;
-            if (hasShorterProof(premises, negate(finalConclusion), chainDepth))
+            if (relationDeterminableShort(premises, w1, w2, chainDepth))
                 continue;
         }
 
