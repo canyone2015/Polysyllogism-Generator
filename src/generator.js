@@ -357,8 +357,9 @@ function generatePolysyllogism({
                 for (const [a, b] of [[cl, cr], [cr, cl]]) {
                     if (a === cl && b === cr && k === ck) continue;
                     const alt = [a, k, b];
-                    if (!entails(premises, alt)) alternatives.push(alt);
+                    if (entails(premises, alt)) continue;
                     if (hasShorterProof(premises, negate(alt), chainDepth)) continue;
+                    alternatives.push(alt);
                 }
             }
             finalConclusion = alternatives.length
@@ -370,13 +371,13 @@ function generatePolysyllogism({
         shuffle(premises, rand);
 
         if (!isConsistent(premises))
-            throw new Error('Internal: premises are inconsistent');
+            continue;
         if (conclusionIsTrue) {
             if (!entails(premises, finalConclusion))
-                throw new Error('Internal: true conclusion not entailed');
+                continue;
         } else {
             if (entails(premises, finalConclusion))
-                throw new Error('Internal: false conclusion is entailed');
+                continue;
             if (hasShorterProof(premises, negate(finalConclusion), chainDepth))
                 continue;
         }

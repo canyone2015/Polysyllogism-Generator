@@ -39,7 +39,7 @@ async function verifyOne(result, chainDepth) {
 test('generator output verified by Z3 + uniform distribution', { timeout: 600_000 }, async () => {
     await setupZ3();
 
-    const RUNS = parseInt(process.env.GEN_RUNS || '200', 10);
+    const RUNS = parseInt(process.env.GEN_RUNS || '1000', 10);
     const configs = [
         { nPremises: 2,  chainDepth: 2 },
         { nPremises: 3,  chainDepth: 3 },
